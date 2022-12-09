@@ -11,7 +11,7 @@ class Map:
         self.settings = Settings()
         self.stats    = GameStats()
         self.screen   = self.settings.screen
-        self.bg       = pygame.image.load('images/bg1.png').convert()
+        self.bg       = pygame.image.load('images/bg.png').convert()
 
         # Grid coordinates for 4 instances of the background image
         self.Grid = {
