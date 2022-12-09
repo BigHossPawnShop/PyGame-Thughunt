@@ -22,6 +22,7 @@ class Map:
         }
 
     def scroll(self):
+        """ILLUSORY MOVEMENT - SPOOKY"""
         if self.Grid['Q1'][0] < -self.bg.get_width():  # If our bg is at the -width then reset its position
             self.Grid['Q1'][0] = self.bg.get_width()
             self.Grid['Q3'][0] = self.bg.get_width()

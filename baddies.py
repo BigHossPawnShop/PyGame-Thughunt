@@ -13,8 +13,8 @@ class Baddy(Sprite):
         self.screen   = self.settings.screen
         self.speed    = speed
         self.size     = size
-        self.health = health
-        self.damage = damage
+        self.health   = health
+        self.damage   = damage
 
         # Perform relative vector maths
         self.dy       = 0
@@ -30,22 +30,25 @@ class Baddy(Sprite):
         self.rect.y = (spawn[1] - size[1] / 2)
 
         # Define hit buffer
-        self.hit_buffer = 0
+        self.hit_buffer  = 0
         self.hit_buffer2 = 0
         self.hit_buffer3 = 0
         self.hit_buffer4 = 0
 
     def update(self, sm_game):
+        """Primary update loop"""
         self.map_shift()
         self.move(sm_game)
         self.settings.screen.blit(self.image, (self.rect.centerx - self.size[0]/2, self.rect.centery - self.size[1]/2))
         self._check_collisions(sm_game)
 
     def map_shift(self):
+        """Adjust position with map"""
         self.rect.x += self.stats.actor_shift_x
         self.rect.y += self.stats.actor_shift_y
 
     def move(self, sm_game):
+        """Every enemy moves on a vector"""
         self.dx     = self.settings.screen_rect.center[0] - self.rect.center[0]
         self.dy     = self.settings.screen_rect.center[1] - self.rect.center[1]
         self.vector = [self.dx, self.dy]
@@ -55,6 +58,8 @@ class Baddy(Sprite):
         self.rect.centery += (self.u_vector[1] * sm_game.stats.enemy_speed * self.speed)
 
     def _check_collisions(self, sm_game):
+        """Detect for collisions"""
+        # Hit the Player character
         if pygame.sprite.spritecollide(self, pygame.sprite.GroupSingle(sm_game.guy), False):
             self.hit_buffer = pygame.time.get_ticks()
             if self.hit_buffer - self.hit_buffer2 > 200:
@@ -62,12 +67,14 @@ class Baddy(Sprite):
                 sm_game.spawnner.show_dam(self.damage)
                 self.hit_buffer2 = pygame.time.get_ticks()
 
+        # Get hit by the Whip only during the attack animation
         if sm_game.guy.OK_Attack and pygame.sprite.spritecollide(self, pygame.sprite.GroupSingle(sm_game.whip), False):
             self.hit_buffer3 = pygame.time.get_ticks()
             if self.hit_buffer3 - self.hit_buffer4 > 121:
                 self.health -= sm_game.stats.whip_damage
                 self.hit_buffer4 = pygame.time.get_ticks()
 
+        # Die
         if self.health <= 0:
             self.kill()
             sm_game.stats.score += 10

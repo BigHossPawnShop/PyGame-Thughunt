@@ -89,6 +89,7 @@ class Guy(Sprite):
                 exit()
 
     def attack(self):
+        """Call to attack"""
         self.Attack_trip = pygame.time.get_ticks()
         self._check_attack()
         if self.OK_Attack:
@@ -98,11 +99,13 @@ class Guy(Sprite):
                 self.OK_Attack   = False
 
     def _check_attack(self):
+        """Can I attack?"""
         self.Attack_trip = pygame.time.get_ticks()
         if (self.Attack_trip - self.Attack_init) > self.stats.whip_delay:
             self.OK_Attack = True
 
     def whip(self, sm_game):
+        """Display the attack"""
         if self.OK_Attack:
             self.settings.screen.blit(sm_game.whip.img, sm_game.whip.rect)
             pygame.sprite.Sprite.add(sm_game.whip, pygame.sprite.GroupSingle(sm_game.whip))
@@ -116,7 +119,8 @@ class Guy(Sprite):
                 self.OK_Attack   = False
 
     def _angler_pish(self, sm_game):
-        self.image = pygame.transform.rotate(self.image, self.angle)
-        sm_game.whip.img = pygame.transform.rotate(sm_game.whip.img, self.angle)
+        """Adjust angles"""
+        self.image        = pygame.transform.rotate(self.image, self.angle)
+        sm_game.whip.img  = pygame.transform.rotate(sm_game.whip.img, self.angle)
         sm_game.whip.rect = sm_game.whip.img.get_rect()
 

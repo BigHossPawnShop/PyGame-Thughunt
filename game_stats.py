@@ -23,11 +23,11 @@ class GameStats:
         self.score              = 0
 
         # Whip Settings
-        self.whip_length = 50   # Range
-        self.whip_delay  = 1000  # Attack Speed (inverse), lower = faster
-        self.whip_range  = 300
+        self.whip_length    = 50   # Range
+        self.whip_delay     = 1000  # Attack Speed (inverse), lower = faster
+        self.whip_range     = 300
         self.whip_thickness = 100
-        self.whip_damage = 100
+        self.whip_damage    = 100
 
         # Enemy Settings
         self.actor_shift_y    = 0  # Shift the actors with the screen (y)
@@ -42,6 +42,7 @@ class GameStats:
 
 
 def PAUSE(sm_game):
+    """Freeze the game in place"""
     for event in pygame.event.get():
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_p:

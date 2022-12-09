@@ -9,8 +9,8 @@ class Settings:
         #Screen Settings
         self.screen_width  = 1200
         self.screen_height = 800
-        self.bg_color      = (55,0,55)
-        self.screen        = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        self.bg_color      = (55, 0, 55)
+        self.screen        = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.screen_rect   = self.screen.get_rect()
 
         #VECTORS

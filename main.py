@@ -11,24 +11,23 @@ from settings import Settings
 
 
 
-
 class Thughunt:
     def __init__(self):
         pygame.init()
         pygame.display.set_caption("Thughunt")
-        self.map      = Map()
-        self.clock    = pygame.time.Clock()
-        self.guy      = Guy()
-        self.stats    = GameStats()
-        self.Enemies  = pygame.sprite.Group()
-        self.spawnner = Gameday(self)
-        self.settings = Settings()
-        self.HUD      = HUD(self)
-        self.Menus    = Menus(self)
-        self.whip = Whip(self)
-        self.paused   = False
-        self.game = True
-        self.Start = False
+        self.map        = Map()
+        self.clock      = pygame.time.Clock()
+        self.guy        = Guy()
+        self.stats      = GameStats()
+        self.Enemies    = pygame.sprite.Group()
+        self.spawnner   = Gameday(self)
+        self.settings   = Settings()
+        self.HUD        = HUD(self)
+        self.Menus      = Menus(self)
+        self.whip       = Whip(self)
+        self.paused     = False
+        self.game       = True
+        self.Start      = False
         self.start_time = pygame.time.get_ticks()
 
     def run_game(self):
