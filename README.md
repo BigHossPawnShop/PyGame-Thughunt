@@ -1,2 +1,2 @@
 # Thughunt
-# Press ESC to exit
+# Press ESC to exit, WASD to move, P to pause/unpause
