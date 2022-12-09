@@ -55,9 +55,6 @@ class Thughunt:
                 self.Menus.END_MENU(self)
                 pygame.display.flip()
 
-            #print(self.clock.get_time())
-
-
 if __name__ == '__main__':
     sm = Thughunt()
     sm.run_game()
